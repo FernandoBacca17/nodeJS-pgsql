@@ -10,6 +10,10 @@ dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+    res.setHeader("Content-Type", "application/json");
+    next();
+});
 
 app.get('/', (req, res) =>{
     res.send('Welcome');
