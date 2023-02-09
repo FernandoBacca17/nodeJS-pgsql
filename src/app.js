@@ -4,6 +4,7 @@ import {pool} from "./db.js";
 import bcrypt from "bcryptjs";
 import dotenv from 'dotenv';
 import jwt from'jsonwebtoken';
+import {PORT} from "./config.js";
 
 dotenv.config();
 const app = express();
@@ -80,5 +81,4 @@ app.post('/login', async (req, res) =>{
     })
 })
 
-app.listen(3000);
-console.log('server in port 3000');
+app.listen(PORT);
