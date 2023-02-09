@@ -9,6 +9,7 @@ import {PORT} from "./config.js";
 dotenv.config();
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) =>{
@@ -74,7 +75,6 @@ app.post('/login', async (req, res) =>{
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
     let expiresIn = process.env.CADUCIDAD_TOKEN;
     const token = jwt.sign( { usuario: user }, jwtSecretKey, {expiresIn: expiresIn});
-    res.writeHead(200, {'Content-Type': 'application/json'});
     res.json({
         ok: true,
         usuario: user,
