@@ -73,7 +73,7 @@ app.post('/login', async (req, res) =>{
     // Genera el token de autenticación
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
     let expiresIn = process.env.CADUCIDAD_TOKEN;
-    const token = jwt.sign( { usuario: user }, jwtSecretKey, expiresIn);
+    const token = jwt.sign( { usuario: user }, jwtSecretKey, {expiresIn: expiresIn});
     res.json({
         ok: true,
         usuario: user,
